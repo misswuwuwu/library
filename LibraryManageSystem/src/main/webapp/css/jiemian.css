@@ -1,0 +1,254 @@
+@charset 'utf-8';
+*{
+	padding: 0;
+	margin: 0;
+	font-size: 18px;
+}
+li
+{
+	list-style: none;
+}
+a
+{
+	text-decoration: none;
+	color: #666666;
+}
+.right
+{
+	width: 400px;
+	position: absolute;
+	right: 0px;
+	color: black;
+}
+.right a
+{
+	display: inline-block;
+	padding-bottom: 20px;
+	margin: 100px;
+	margin-bottom: 30px;
+	font-size: 14px;
+
+}
+.right a:hover
+{
+	border-bottom: 1px solid red;
+}
+.nav-top 
+{
+	display: inline-block;
+	height: 141px;
+	width: 100%;
+	/*background-repeat:no-repeat;*/
+	/*background-image: url(./学校.jpg);*/
+	/*background-position:50% 50%;*/
+
+}
+
+
+
+.crest div
+{
+	content: "";
+	display:block;
+	padding-bottom: 144px;
+}
+.crest div>div
+{
+	
+	background-size:  auto 147px;
+	background-repeat: no-repeat;
+	background-image: url(https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=00248a7adcc451dae2fb04b9d7943903/0df3d7ca7bcb0a46e9ee991d6a63f6246a60afc1.jpg);
+
+}
+
+
+.nav-top ul
+{
+
+	
+	display: block;
+	width: 200px;
+	height: 120px;
+	background-color: rgba(255,255,255,0.5);
+	float: left;
+	font-size: 12px;
+}
+.nav-top ul:first-child
+{
+	width: 800px;
+	clear: both;
+}
+
+.nav-mid
+{	
+	height: 55px;
+	width: 100%;
+	display: block;
+	color: white;
+	background-color: rgb(217,37,30);
+	border:1px solid rgba(255, 255, 255, 0.75);
+	position: relative;
+	color: white;
+}
+.nav-mid div:first-child
+{
+	display: block;
+	width: 171px;
+	height: 50px;
+	/*background: black;*/
+	position: absolute;
+	left: 91%;
+
+
+}
+.nav-mid div:last-child
+{
+	font-size: 24px;
+	display: block;
+	margin: 5px;
+	width: 208px;
+	height: 37px;
+	/*background: black;*/
+	position: absolute;
+	left: 40%;
+
+
+}
+.mid-text
+{
+	display: block;
+	margin: 10px;
+	padding: 1px;
+	font-size: 20px;
+
+}
+.nav-mid >div
+{
+
+	display: block;
+	width: 200px;
+	height: 40px;
+	float: right;
+}
+.nav-mid >div div
+{
+	display: block;
+	clear: both;
+	/*margin: 50% 50%;*/
+
+}
+.information li
+{
+	display:block;
+	width: 170px;
+	height: 30px;
+	float: right;
+}
+.nav-bottom
+{
+	display: block;
+	margin-top:30px; 
+	width: 100%;
+
+}
+.nav-left
+{
+	
+	display: inline-block;
+
+	width: 9%;
+	height: 600px;
+
+	border-right: 1px solid grey ;
+
+}
+.nav-left a
+{
+	display: inline-block;
+
+	width: 150px;
+	height:70px;
+	float: left;
+
+	text-align: center;
+	line-height: 70px;
+	color: rgb(217,37,30);
+	background:white;
+
+}
+.nav-left a:hover
+{
+	display: block;
+	color: white;
+	background: rgb(217,37,30);
+}
+.nav-right
+{
+	display: inline-block;
+	width: 90%;
+	height: 600px;
+	margin: 0;
+	padding: 0;
+	float: right;
+	background: green;
+
+}
+.nav-right tr
+{
+	display: inline-block;
+	margin: 10px;
+}
+.nav-right span 
+{
+	display:block;
+	width: 210px;
+	margin-right: 20px; 
+	border: 1px solid black;
+
+}
+.nav-right input
+{
+	display:block;
+	width: 210px;
+	margin-right: 20px; 
+	border: 1px solid black;
+}
+.nav-right td
+{
+	width: 110px;
+}
+
+/*.nav-right div
+{
+	display:block;
+	width: 200px;
+	height: 200px;
+	margin-right: 400px; 
+	margin-left: 0px; 
+	border: 1px solid black;
+	float: right;
+
+}
+*/
+.nav-right div
+{
+	content: "";
+	display:block;
+	padding-bottom: 144px;
+	padding-right: 100px;
+	margin-right:100px; 
+	width: 200px;
+	height: 200px;
+	border: 1px solid block;
+	float: right;
+}
+.nav-right div>div
+{
+	
+	background-size: auto 200px;
+	background-repeat: no-repeat;
+	/*头像地址*/
+	
+
+}
+

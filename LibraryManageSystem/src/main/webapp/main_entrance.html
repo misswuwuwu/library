@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理系统入口页面</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style type= "text/css">
+    /*reset*/
+    body{
+        background-color:#96f0ca;
+    }
+    .clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+    }
+    .fl{
+        float: left;
+    }
+    /*reset*/
+    #firstPage{
+        width: 20%;
+        height: 600px;
+        display: inline-block;
+    }
+
+    #firstPage .notice{
+        text-align: center;
+    }
+    .notice {
+        height: 402px;
+        width: 606px;
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        text-align: center;
+    }
+    .text_area{
+        height: 200px;
+        width: 600px;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="firstPage">
+            <div class="register fl">
+                <span>
+                    用户登录
+                </span>
+                <a href="./login/user_login.html">
+                    <img src="./img/signup.png" alt="">
+                </a>
+            </div>
+            <div class="register fl">
+                <span>
+                    管理员登录
+                </span>
+                <a href="login/admin_login.html">
+                    <img src="./img/manage.png" alt="">
+                </a>
+            </div>
+            <div class="register fl">
+                <span>
+                    用户注册
+                </span>
+                <a href="./register/register.html">
+                    <img src="./img/register.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="notice">
+            <h1>公告</h1>
+            <!--<textarea class="text_area" readonly="readonly" v-model="w_announcement">{{announcement}}</textarea>-->
+            <textarea class="text_area" readonly="readonly">{{announcement}}</textarea>
+        </div>
+    </div>
+        <script>
+            const app = new Vue({
+                el:"#app",
+                data() {
+                    return {
+                        announcement:'',
+                        w_announcement:'',
+                        res:'大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好大家好'
+                    }
+                },
+                //周期函数
+                mounted() {
+                    //启动axios获取数据
+                    this.getannuouncement();
+                },
+                methods: {
+                    getannuouncement:function(){
+                    axios
+                        .get('./notice/findDetails',{})
+                        .then((res)=>{
+                            //请求成功后返回
+                            this.annuouncement_format(res.data.context);
+                        })
+                        .finally(()=>{console.log("获取公告执行完毕");})
+                    },
+                  annuouncement_format:function(res) {
+                    this.announcement = res;
+                  }
+                }
+            })
+        </script>
+</body>
+</html>

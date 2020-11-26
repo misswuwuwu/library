@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-cookies@1.7.4/vue-cookies.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    
+<style lang="">
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    body{
+        background-color:#96f0ca;
+    }
+    /* 导航栏 */
+    .nav{
+        width: 100%;
+        background-color: cadetblue;
+        height: 90px;
+    }
+    .main .nav .logo{
+        float: left;
+        
+    }
+    .main .nav .menu{
+        float: right;
+        top: -120px;
+        position: relative;
+    }
+    .main .nav img{
+        height: 80px;
+    }
+    .main .nav .list_menu .list_menu_ul{
+        width: 830px;
+        height: 60px;
+        display: inline-block;
+    }
+    .main .nav .list_menu li{
+        width: 160px;
+        height: 65px;
+        list-style: none;
+        float: left;
+        font-size: 26px;
+        padding-top: 20px;
+        margin-right: 6px;
+    }
+    /* .list_menu_ul {
+        margin-top: 33px;
+    } */
+
+    .list_menu_ul li:hover{
+        border-bottom: blue 5px solid;
+        color: blue;
+    }
+    /* histooy */
+    .nav_history{
+        width: 1150px;
+        height: 565px;
+        margin: auto;
+        /* background-color: chartreuse; */
+    }
+    /* history_search */
+    .nav_history_search{
+        width: 389px;
+        float: right;
+        font-size: 0px;
+    }
+    .el-input .el-icon-search{
+        float: right;
+    }
+    .el-input{
+        width: 300px;
+    }
+    .el-button--primary{
+        background-color: rgb(105, 207, 119);
+    }
+    /* history_contain */
+    .cell{
+        text-align: center;
+    }
+    /*分页*/
+    .block{
+        position:absolute;
+        top: 635px;
+        left: 800px;
+    }
+    /*  */
+.dialog{
+z-index:1000;
+width:800px;
+height:400px;
+box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+border-radius: 4px;
+position:absolute;
+background-color: #eee;
+text-align:center;
+display:none;
+border-radius: 20px;
+right: 28%;
+top: 20%;
+}
+.tdCode a{
+    text-decoration: none;
+}
+.pic{
+    position: relative;
+    border: 1px solid #eee;
+    margin-left: 20px;
+}
+.dialog .close{
+position: relative;
+top: -210px;
+right: -370px;
+}
+.dialog .btn{
+    position: relative;
+    top: 20px;
+    right:30px;     
+}
+
+.dialog .jieshao{
+    position: relative;
+    top: 60px;
+    right: 183px;
+}
+.dialog .jieshao h3{
+    margin-left: 40px;
+}
+.dialog .information p{
+    margin-left: 30px ;
+    margin-top: 20px;
+    text-align: center;
+}
+.dialog .n1{
+    position: relative;
+    top: -45px;
+    right: -100px;
+}
+.dialog .n2{
+    position: relative;
+    top: -50px;
+    right: -150px;
+}
+.dialog .n3{
+    position: relative;
+    top: 48px;
+    right: 110px;
+}
+.dialog .m2{
+    position: relative;
+    top: -10px;
+    right: -71px;
+}
+.dialog .m3{
+    position: relative;
+    top: 90px;
+    right: 168px;
+}
+.omenu{
+    position: relative;
+    top: -270px;
+    right: 20px;
+}
+.dialog_title{
+    position: relative;
+    top: 35px;
+}
+.oBorder{
+    width: 620px;
+    height: 190px;
+    position: relative;
+    right: -100px;
+}
+.dialog_table_box{
+    position: relative;
+    top: 60px;
+}
+/* 弹出页面窗口 */
+</style>
+</head>
+<body>
+    <div class="main History" id=app>
+        <div class="nav">
+            <div class="logo"><a href="../main_menu.html"><img src="../img/logo.png"></a></div>
+            <div class="list_menu">
+                <ul class="list_menu_ul">
+                    <li>
+                        用户列表
+                    </li>
+                    <li>
+                        图书借阅
+                    </li>
+                    <li>
+                        书库
+                    </li>
+                    <li>
+                        首页公告管理
+                    </li>
+                    <li>
+                        借阅统计
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav_history">
+            <div class="nav_history_search">
+                <el-input v-model="input_value" placeholder="请输入内容" class="el-input" @keyup.enter="search"></el-input>
+                <el-button type="primary" icon="el-icon-search" @click="search">搜索</el-button>
+            </div>
+             <div class="nav_history_contain">
+                <el-table :data="tableData" style="width: 100%" >
+                <el-table-column prop="bname" label="书籍情况" width="680" ></el-table-column>
+                <el-table-column prop="startDate" label="借阅日期" width="380" ref="book_detail"></el-table-column>
+                <el-table-column prop="address" label="操作">
+                    <template  slot-scope="scope">
+                        <el-button type="primary" icon="el-table-detail" @click="click_detail(scope.$index,scope.row)">详情</el-button>
+                    </template>
+                </el-table-column>
+                </el-table>
+                <!-- 详细 -->
+                <div class="dialog" ref="dialog_table">
+                    <div class="dialog_title">
+                        <h2>书名：{{bname}}</h2>
+                    </div>
+                    <div class="dialog_table_box" >
+                        <table  class="oBorder">
+                            
+                            <tr>
+                                <td>用户ID:{{login_id}}</td>
+                                <td>用户姓名:{{username}}</td>
+                                <td>距离归还剩:{{end_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>书籍名称:{{bname}}</td>
+                                <td>借阅时间:{{start_date}}</td>
+                                <td>借阅有效期:{{last_date}}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </div>
+                <!-- 分页 -->
+                <div class="block">
+                    <span class="demonstration"></span>
+                    <!-- size-chage 每页显示——handleSizeChange-->
+                    <!-- current-change改变当前页面——（需要默认修改） -->
+                    <!-- current-page 下面页码数 -->
+                    <!-- page-size个数选择器 -->
+                    <!--  -->
+                    <!-- total数据个数 -->
+                    <!-- hide-on-single-page="value"隐藏/显示 -->
+                    <el-pagination
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :current-page="currentPage"
+                    :page-sizes="pageSizes" 
+                    :page-size="pageSize"
+                    layout="prev, pager, next, jumper"
+                    :total="totalCount"
+                    >
+                    </el-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    const app = new Vue({
+        el:"#app",
+            data() {
+                return {
+                    input_value:"",
+                    //显示第几页
+                    currentPage:1,
+                    //总数据多少条
+                    totalCount:1,
+                    //选择条数
+                    pageSizes:[1,2,3,4,5],
+                    // 默认每页显示的条数
+                    pageSize:7,
+                    //是否显示值value
+                    value:false,
+                    //总页数
+                    pageCount:1,
+                    //
+                    tableData: [],
+                    //测试数据
+                    // 书籍信息
+                    bid:1,
+                    bname:"书名",
+                    country:"国家",
+                    type:"类别",
+                    available:"剩余",
+                    unavailable:"无书",
+                    topic:"主题",
+                    length:"篇幅",
+                    introduction:"简介",
+                    on_shelf:"上架时间",
+                    status:"状态",
+                    start_date:"开始日期",
+                    end_date:"归还日期",
+                    is_return:"是否已归还",
+                    last_date:"1个月",
+                    //书籍信息
+                    textBook:[],
+                    //书籍信息
+                    //个人信息
+                    login_id:"用户ID",
+                    username:"用户姓名",
+                    password:"密码",
+                    email:"邮箱",
+                    age:"年龄",
+                    birthday:"生日",
+                    phone:"手机",
+                    address:"地址",
+                    gender:"性别",
+                    describes:"描述",
+                    //
+                    dis:1,
+                    textData:[
+                    {
+                        bname: '莎士比亚没有士',
+                        name: '莎比',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '生子当如孙仲谋,十万精兵送合肥',
+                        name: '孙十万',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '爱因斯坦不过如此',
+                        name: '陈伟涛',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '42016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '52016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '62016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '72016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '只要你够丑',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '虎大佬比',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }]
+        
+                    }
+                },
+                methods: {
+                    //显示多少页码
+                    //判断总共多少条——总共total/页显示数size
+                    // handlePageCount(val=this.pageCount){
+                    //     this.pageCount=parseInt((this.textData.length)/this.pageSize)+1;
+                    //     console.log("handlePagecount");
+                    //     return val
+                    // },
+                    //每页多少条
+                    handleSizeChange(val=7) {
+                        console.log(`每页 ${val} 条`);
+                        return val
+                    },
+                    //显示第几页
+                    handleCurrentChange(val) {
+                        this.currentPage=val
+                        console.log(this.currentPage);
+                        this.handleData(this.textData);
+                        return val
+                    },
+                    //数据处理
+                    handleData(Data){
+                        //返回当前页数，呈现的数据条
+                        //清空tableData
+                        this.tableData=[];
+                        //数据长度返回给this
+                        this.totalCount=Data.length;
+                        //判断textlist多少条——Data.length
+                        this.pageCount= parseInt(Data.length/this.pageSize)+1;
+                        //
+                        //    pagecount= page Data.length/this.pageSize获取到页码数
+                        if (this.pageCount== this.currentPage) {
+                            //最后一页判断需要输出多少位
+                            //判断最后一页多少个
+                            for (let index = 0; index < (Data.length%this.pageSize); index++) {
+                                this.tableData.push(Data[((this.pageCount-1)*this.pageSize)+index])                        
+                            }
+                        }else{
+                            //当前的页数
+                            for (let index = 0; index < this.pageSize; index++) {
+                                this.tableData.push(Data[((this.currentPage-1)*this.pageSize)+index])                        
+                            }
+                        }
+                        //前面的页码数直接输出7位
+                        //
+                        // this.handleSizeChange
+                    },
+                    //搜索交互
+                    search(){
+                        // 交互
+                        // console.log(this.input_value);
+                       axios
+                            .get('../user/findUserBorrowHistoryByName',{
+                                params:{
+                                    bname:this.input_value
+                                }
+                            })
+                            .then((res)=>{
+                                for (let item in res.data) {
+                                    res.data[item].startDate=new Date(res.data[item].startDate);
+                                    let year=res.data[item].startDate.getFullYear();
+                                    let month=res.data[item].startDate.getMonth()+1;
+                                    let date=res.data[item].startDate.getDate();
+                                    res.data[item].startDate=""+year+"-"+month+"-"+date;
+                                    console.log(res.data[item].startDate);
+                                }
+
+                                this.textData=res.data;
+                                // console.log(res.data);
+                                this.handleData(this.textData);
+                            })
+                            .finally(()=>{console.log("获取搜索执行完毕");})
+                    },
+                    // 历史表交互
+                    history_list(){
+                        axios
+                            .get('../user/findUserBorrowHistory',{
+                            })
+                            .then((res)=>{
+                                for (let item in res.data) {
+                                    res.data[item].startDate=new Date(res.data[item].startDate);
+                                    let year=res.data[item].startDate.getFullYear();
+                                    let month=res.data[item].startDate.getMonth()+1;
+                                    let date=res.data[item].startDate.getDate();
+                                    res.data[item].startDate=""+year+"-"+month+"-"+date;
+                                    console.log(res.data[item].startDate);
+                                }
+
+                                this.textData=res.data;
+                                console.log(res.data);
+                                this.handleData(this.textData);
+
+                            })
+                            .finally(()=>{console.log("获取历史表获取执行完毕");})
+                    },
+                    click_detail(index,row){
+                        this.dis+=1;
+                        let ref_display=this.$refs.dialog_table.style;
+                        console.log(row.bname);
+                        //交互
+                        this.detail_list(row.bname);
+                        // console.log(ref_display);
+                        //默认dis=0——不显示
+                        if (this.dis%2==0) {
+                            //显示
+                            ref_display.display="block";
+                        }else{
+                            ref_display.display="none";
+                        }
+                    },
+                    //详情交互
+                    detail_list(bname){
+                        console.log(bname);
+                        axios
+                            .get('../user/findBorrowDetails',{
+                                // 书名+ID
+                                params: {
+                                    bname:bname
+                                }
+                            })
+                            .then((res)=>{
+                                //接收的内容
+                                this.login_id=res.data.loginId;
+                                this.username=res.data.username;
+                                this.end_date=res.data.restDays+"天";
+                                this.bname=res.data.bname;
+                                this.start_date=res.data.startDate;
+                                console.log(res);
+                            })
+                            .finally(()=>{console.log("获取历史表获取执行完毕");})
+                    }
+                },
+                //周期函数
+                mounted() {
+                    this.history_list();
+                    /*console.log(this.$cookies.get("loginId"));
+                    this.$cookies.get("loginId");*/
+                    // this.totalCount=this.textData.length;
+                },
+        }
+    )
+        
+        </script>
+
+</body>
+</html>

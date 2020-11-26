@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.wyu.dao.CountDao">
+    
+    <select id="countBorrowByDay" resultType="Integer">
+        SELECT COUNT(1) FROM user_book WHERE TO_DAYS(start_date) = TO_DAYS(NOW());
+    </select>
+
+    <select id="countBorrowByMonth" resultType="Integer">
+        SELECT COUNT(1) FROM user_book WHERE DATE_FORMAT(start_date, '%Y%m') = DATE_FORMAT(CURDATE(), '%Y%m');
+    </select>
+
+    <select id="countBorrowByYear" resultType="Integer">
+        SELECT COUNT(1) FROM user_book WHERE YEAR(start_date) = YEAR(NOW());
+    </select>
+
+    <select id="countReturnByDay" resultType="Integer">
+        SELECT COUNT(1) FROM user_book WHERE TO_DAYS(end_date) = TO_DAYS(NOW());
+    </select>
+
+    <select id="countReturnByMonth" resultType="Integer">
+        SELECT COUNT(1) FROM user_book WHERE DATE_FORMAT(end_date, '%Y%m') = DATE_FORMAT(CURDATE(), '%Y%m');
+    </select>
+
+    <select id="countReturnByYear" resultType="Integer">
+        SELECT COUNT(1) FROM user_book WHERE YEAR(end_date) = YEAR(NOW());
+    </select>
+
+</mapper>

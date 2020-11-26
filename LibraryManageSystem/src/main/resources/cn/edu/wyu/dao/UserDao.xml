@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.wyu.dao.UserDao">
+
+    <resultMap id="userMap" type="user">
+        <id property="uid" column="uid"></id>
+        <result property="loginId" column="login_id"></result>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <result property="email" column="email"></result>
+        <result property="age" column="age"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="phone" column="phone"></result>
+        <result property="address" column="address"></result>
+        <result property="gender" column="gender"></result>
+        <result property="describe" column="describes"></result>
+        <result property="status" column="status"></result>
+        <!--<collection property="bookList" ofType="book">
+            <id property="bid" column="bid"></id>
+            <result property="bname" column="bname"></result>
+            <result property="country" column="country"></result>
+            <result property="type" column="type"></result>
+            <result property="available" column="available"></result>
+            <result property="unavailable" column="unavailable"></result>
+            <result property="topic" column="topic"></result>
+            <result property="length" column="length"></result>
+            <result property="introduction" column="introduction"></result>
+            <result property="onShelf" column="on_shelf"></result>
+            <result property="status" column="status"></result>
+        </collection>-->
+    </resultMap>
+
+    <resultMap id="borrowHistoryMap" type="borrowHistory">
+        <result property="username" column="username"></result>
+        <result property="bname" column="bname"></result>
+        <result property="startDate" column="start_date"></result>
+        <result property="endDate" column="end_date"></result>
+        <result property="isReturn" column="is_return"></result>
+    </resultMap>
+
+    <select id="findAll" resultMap="userMap">
+        SELECT * FROM user WHERE status = 1;
+    </select>
+
+    <!--<select id="findAll" resultType="java.util.Map" resultMap="userMap">
+        SELECT * FROM user WHERE status = 1 LIMIT #{start} , #{count};
+    </select>-->
+
+    <select id="findByUsername" parameterType="String" resultMap="userMap">
+        SELECT * FROM user WHERE username LIKE #{username} AND status = 1;
+    </select>
+
+    <update id="deleteById" parameterType="Integer">
+        UPDATE user SET status = 0 WHERE uid = #{uid};
+    </update>
+
+    <select id="findBorrowHistory" parameterType="Integer" resultMap="borrowHistoryMap">
+        SELECT u.username, b.bname, ub.start_date, ub.end_date, ub.is_return
+        FROM user u, user_book ub, book b
+        WHERE u.`status` = 1 AND u.uid = #{uid} AND ub.uid = #{uid} AND ub.bid = b.bid
+        ORDER BY start_date DESC;
+    </select>
+
+    <select id="findTotalCount" resultType="Integer">
+        SELECT COUNT(1) FROM user WHERE status = 1;
+    </select>
+
+    <insert id="addUser" parameterType="user">
+        INSERT INTO user (login_id, username, password, email, status) VALUES (#{loginId}, #{username}, #{password}, #{email}, 1);
+    </insert>
+
+    <select id="findByLoginId" parameterType="String" resultMap="userMap">
+        SELECT * FROM user WHERE status = 1 AND login_id = #{loginId};
+    </select>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE user SET username = #{username},
+        <if test="password != null and password != '' ">
+            password = #{password},
+        </if>
+        email = #{email}, age = #{age}, birthday = #{birthday}, phone = #{phone},
+        address = #{address}, gender = #{gender}, describes = #{describe} WHERE login_id = #{loginId};
+    </update>
+
+    <select id="findUserBorrowHistoryByName" parameterType="java.util.Map" resultMap="borrowHistoryMap">
+        SELECT u.username, b.bname, ub.start_date, ub.end_date, ub.is_return
+        FROM user u, user_book ub, book b
+        WHERE u.`status` = 1 AND u.uid = #{uid} AND ub.uid = #{uid} AND ub.bid = b.bid AND b.bname LIKE #{bname}
+        ORDER BY start_date DESC;
+    </select>
+
+    <select id="findBorrowDetails" parameterType="java.util.Map" resultMap="borrowHistoryMap">
+        SELECT u.username, b.bname, ub.start_date, ub.end_date, ub.is_return
+        FROM user u, user_book ub, book b
+        WHERE u.`status` = 1 AND u.uid = #{uid} AND ub.uid = #{uid} AND ub.bid = b.bid AND b.bname = #{bname} LIMIT 1;
+    </select>
+
+    <update id="updateBorrowHistory" parameterType="java.util.Map">
+        UPDATE user_book SET end_date = #{endDate}, is_return = 1 WHERE uid = #{uid} AND bid = #{bid};
+    </update>
+
+    <select id="findBorrowing" parameterType="String" resultMap="borrowHistoryMap">
+        SELECT u.username, b.bname, ub.start_date, ub.end_date, ub.is_return
+        FROM user u, user_book ub, book b
+        WHERE u.status = 1 AND u.login_id = #{loginId} AND u.uid = ub.uid AND ub.bid = b.bid
+        AND ub.is_return = 0 ORDER BY start_date DESC;
+    </select>
+
+    <insert id="addBorrowHistory" parameterType="java.util.Map">
+        INSERT INTO user_book (uid, bid, start_date, end_date, is_return)
+        VALUE (#{uid}, #{bid}, #{startDate}, #{endDate}, 0);
+    </insert>
+
+</mapper>

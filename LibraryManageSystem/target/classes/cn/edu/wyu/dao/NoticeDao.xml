@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.wyu.dao.NoticeDao">
+
+    <select id="findDetails" resultType="String">
+        SELECT context FROM notice LIMIT 1;
+    </select>
+
+    <update id="updateNotice" parameterType="String">
+        UPDATE notice SET context = #{context};
+    </update>
+
+</mapper>

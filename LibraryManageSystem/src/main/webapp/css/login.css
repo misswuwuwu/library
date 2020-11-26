@@ -1,0 +1,62 @@
+*
+{
+	font-family: sans-serif;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	background-color: #96f0ca;
+	/* background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605591830278&di=3b65bc6e2d20520fd3f2059ba937a141&imgtype=0&src=http%3A%2F%2Fimg3.doubanio.com%2Fview%2Fphoto%2Fl%2Fpublic%2Fp2512414373.jpg); */
+}
+.div
+{
+	position:relative;
+	left: -25px;
+}
+
+.box
+{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background-color: #7f8c8d;
+	padding: 150px;
+	border-radius: 10px;
+	text-align: center;
+	opacity: 85%;
+}
+.UsN
+{
+	border-color: black;
+	border-radius: 10px;
+	text-align: center;
+	margin: 10px;
+	padding: 10px;
+
+}
+.pwd
+{
+	border-color: black;
+	border-radius: 10px;
+	text-align: center;
+	margin: 10px;
+	padding: 10px;
+
+}
+.button
+{
+	border: none;
+	margin: 10px;
+	padding: 15px;
+	border-radius: 10px;
+}
+.pwd{
+
+	width: 300px;
+}
+.pwd:focus
+{
+	border-color: #3498db;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主功能选择页面</title>
+    <style>
+            /*图标引入*/
+    @font-face {
+    font-family: 'iconfont';
+    src: url('./font/iconfont.eot');
+    src: url('./font/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('./font/iconfont.woff2') format('woff2'),
+        url('./font/iconfont.woff') format('woff'),
+        url('./font/iconfont.ttf') format('truetype'),
+        url('./font/iconfont.svg#iconfont') format('svg');
+    }
+    .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+    .iconfont1 {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+    .ig {
+        display: table;
+	    float: left;
+	    width: 35%;   
+	    text-align: center;
+	    line-height: 30px;
+        }
+        .ig img {
+            margin: auto;
+        }    
+
+    /*图标引入*/
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-color:#96f0ca;
+        }
+        .nav{
+            width: 100%;
+            background-color: cadetblue;
+            height: 90px;
+        }
+        .main .nav .logo{
+            float: left;
+            
+        }
+        .main .nav .menu{
+            float: right;
+            top: -120px;
+            position: relative;
+        }
+        .main .nav img{
+            height: 80px;
+        }
+        .main .nav .list_menu .list_menu_ul{
+            width: 600px;
+            height: 70px;
+            display: inline-block;
+            margin-left: 30px;
+        }
+        .main .nav .list_menu li{
+            list-style: none;
+            float: left;
+        }
+        .list_menu_ul {
+            margin-top: 50px;
+        }
+        .list_menu_ul a{
+            color: #6c6c6c;
+        font-size: 13px;
+        text-decoration: none;
+        }
+        .list_menu_ul a:hover{
+            color: #f40;
+        }
+     
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="nav">
+            <div class="logo"><a href="guangliyuan.html"><img src="./img/logo.png"></a></div>
+            <div class="list_menu">
+                <ul class="list_menu_ul">
+                    <li>
+                        <span class="iconfont1 arrow">&#xe836;</span>
+                        <a href="#"><span class="FontList">用户列表</span></a>
+                    </li>
+                    <li>
+                        <span class="iconfont1 arrow">&#xe6f3;</span>
+                        <a href="#"><span class="FontList">图书借阅与归还</span></a>
+                    </li>
+                    <li>
+                        <span class="iconfont1 arrow">&#xe7f1;</span>
+                        <a href="#"><span class="FontList">书库</span></a>
+                    </li>
+                    <li>
+                        <span class="iconfont1 arrow">&#xe69b;</span>
+                        <a href="#"><span class="FontList">首页公告管理</span></a>
+                    </li>
+                    <li>
+                        <span class="iconfont1 arrow" ></style>&#xe602;</span>
+                        <a href="#"><span class="FontList">图书借阅统计</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu" @click="menu"><a href="#" ><img src="./img/menu.png"></a></div>
+        </div>
+        <div class="contain">
+            <div class="ig"><a href="User_list.html"><img src="./img/userlist.png" alt=""></a></div>
+            <div class="ig"><a href="searchbook_admin.html"><img src="./img/bookReturn.png" alt=""></a></div>
+            <div class="ig"><a href="announce.html"><img src="./img/indexManager.png" alt=""></a></div>
+            <div class="ig"><a href="managebook_admin.html"><img src="./img/bookWarehouse.png" alt=""></a></div>
+            <div class="ig"><a href="count.html"><img src="./img/bookCount.png" alt=""></a></div>
+            <div class="ig"><img src="./img/bookitem.png" alt=""></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

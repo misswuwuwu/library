@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/login.css">
+
+    
+</head>
+<body>
+
+    <div class="box" id = app>
+        <img src="../img/signup.png">
+        <h1>用户登陆</h1>
+        <div display=inline-black class="div">
+            <span>用户名:
+                <input type="text" placeholder="请输入学号" class="pwd" v-model="user_id" @keydown="limit_num">
+            </span>
+        </div>
+        <div display=inline-black class="div">
+            <span>密码:&nbsp&nbsp&nbsp
+                <input type="password" placeholder="请输入密码" class="pwd" v-model="user_password" @keydown="limit_num">
+            </span> 
+        </div>
+        
+        <button @click="login()">登陆</button>
+        <!-- <a href="D:\web frond-end\111\界面2显示.html">
+            <button>管理者登陆跳转</button>
+        </a>
+        <a href="D:\web frond-end\111\界面2显示.html">
+            <button>教师登陆跳转</button>
+        </a>
+        <a href="D:\web frond-end\111\界面2显示.html">
+            <button >学生登陆登陆跳转</button>
+        </a> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        
+    var app = new Vue({
+        el:"#app",
+        data:()=>({
+            user_password:'',
+            user_id:'',
+            }),  
+        methods: {
+            // 输入判断，是否为空
+            clickhandle(user_id,user_password) {
+                axios
+                    .post('../user/login',
+                    {
+                        loginId:user_id,
+                        password:user_password
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        console.log(res.data.flag);
+                        if (res.data.flag) window.location.href="../main_menu.html";
+                        else {
+                            alert(res.data.msg);
+                        }
+                        //window.location.href="../main_menu.html";
+                        // 关键字改变，请求地址发生改变，接着把结果数据赋值给list[] 
+                        this.list = res.data;
+                    })
+                    .finally(()=>{console.log("执行完成");})
+            },
+            login(){
+
+                if(this.user_id==''||this.user_password==''){
+                    alert("账号密码不为空哦")
+                    location.reload();
+                }else{
+                    this.clickhandle(this.user_id,this.user_password);
+                }
+            },
+            limit_num(){
+                if (this.user_id.length>30||this.user_password.length>30){
+                    alert("账号密码过长");
+                    location.reload();
+                }
+            }
+        }
+    })
+
+
+    </script>
+</body>
+</html>

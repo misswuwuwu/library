@@ -1,0 +1,72 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8516121",
+      "name": "库存",
+      "font_class": "kucun",
+      "unicode": "e7f1",
+      "unicode_decimal": 59377
+    },
+    {
+      "icon_id": "10101675",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "10164384",
+      "name": "公告",
+      "font_class": "gonggao",
+      "unicode": "e69b",
+      "unicode_decimal": 59035
+    },
+    {
+      "icon_id": "10164907",
+      "name": "图书馆",
+      "font_class": "tushuguan",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "10815879",
+      "name": "统计",
+      "font_class": "tongji",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "11457484",
+      "name": "注销",
+      "font_class": "Write-off",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "15067177",
+      "name": "用户列表",
+      "font_class": "yonghuliebiao",
+      "unicode": "e836",
+      "unicode_decimal": 59446
+    },
+    {
+      "icon_id": "15685547",
+      "name": "表单 列表-03 (1)",
+      "font_class": "biaodanliebiao-031",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "15888107",
+      "name": "借阅管理",
+      "font_class": "jieyueguanli",
+      "unicode": "e6f3",
+      "unicode_decimal": 59123
+    }
+  ]
+}
