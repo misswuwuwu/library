@@ -10,8 +10,6 @@ public interface UserDao {
 
     List<User> findAll();
 
-    /*List<User> findAll(Map<String, Integer> map);*/
-
     List<User> findByUsername(String username);
 
     void deleteById(Integer uid);

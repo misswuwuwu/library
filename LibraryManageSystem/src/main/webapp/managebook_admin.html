@@ -320,7 +320,7 @@
             <div style="display: flex; height: 90px;">
                 <transition name="el-zoom-in-top">
                     <div v-show="show2" class="transition-box" style="background-color: rgb(43, 187, 187);width: 1582px;height: 100%;padding:20px 20px;">
-                        <el-row style="font-size: 30px;">
+                        <el-row style="font-size: 27px; ">
                             国家
                             <el-select v-model="mul_search.country" placeholder="请选择">
                                 <el-option
@@ -370,7 +370,7 @@
             <!-- 输入框查询 -->
             <div style="display: flex;margin-top: 13px; height: 90px;">
                 <transition name="el-zoom-in-center">
-                    <div v-show="show2" class="transition-box" style="background-color: rgb(221, 108, 218);width: 1582px;height: 100%;padding:20px 20px;">
+                    <div v-show="show2" class="transition-box" style="background-color: gainsboro;width: 1582px;height: 100%;padding:20px 20px;">
                         <el-row style="font-size: 30px; float: right;height: 80px;width: 100%;" >
                             <el-input
                                 placeholder="请输入内容"
@@ -405,7 +405,7 @@
             <!-- 分页 -->
             <div style="display: flex;margin-top: 13px; height: 70px;margin-bottom: 0px;">
                 <transition name="el-zoom-in-top">
-                    <div v-show="show2" class="transition-box" style="background-color:rgb(120, 181, 233);width: 1582px;height: 100%;padding:20px 20px;margin-bottom: 0px;">
+                    <div v-show="show2" class="transition-box" style="background-color:ghostwhite;width: 1582px;height: 100%;padding:20px 20px;margin-bottom: 0px;">
                         <div class="block">
                             <span class="demonstration"></span>
                             <!-- size-chage 每页显示——handleSizeChange -->
@@ -515,7 +515,7 @@
                     </el-input>
                     <div style="margin-top:20px;">
                         <el-button type="primary" icon="el-table-detail" @click="book_change" class="dialog_btn" >保存</el-button>
-                        <el-button type="primary" icon="el-table-detail" @click="book_delete" class="dialog_btn" >书籍删除</el-button>
+                        <el-button type="primary" icon="el-table-detail" @click="delete_bookDialogVisible=true" class="dialog_btn" >书籍删除</el-button>
                     </div>
                 </div> 
             </div>
@@ -560,6 +560,17 @@
                         <el-button type="primary"  @click="click_add">保存</el-button>
                     </div>
                 </div>
+            </el-dialog>
+            <!-- 弹窗三 -->
+            <el-dialog
+                title="注意"
+                :visible.sync="delete_bookDialogVisible"
+                width="30%"
+                style="height:30%">
+                    <span>是否删除</span>
+                    <span slot="footer" class="dialog-footer" @click="delete_bookDialogVisible = false">
+                    <el-button @click="delete_bookDialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="book_delete">确 定</el-button>
             </el-dialog>
         </div>
         
@@ -633,6 +644,7 @@
                     addFormVisible:false,
                     // dis:false,
                     dis:1,
+                    rowbname:'',
                     available_table:[
                     {
                         bname: '莎士比亚没有士',
@@ -732,6 +744,7 @@
                     //分页————————————————————
                     //页面效果
                     logoutDialogVisible:false,
+                    delete_bookDialogVisible:false,
                     
                     activeIndex: '1',
                     activeIndex2: '1',
@@ -1014,6 +1027,7 @@
                     this.ref_display=this.$refs.dialog_table.style;*/
                     //交互
                     this.dis+=1;
+                    this.rowbname=row.bname;
                     let ref_display=this.$refs.dialog_table.style;
                     console.log(row.bname)
                     this.click_edit(row.bname);
@@ -1169,6 +1183,7 @@
                         },
                     //书籍删除
                         book_delete(){
+
                             this.click_window_btn();
                             axios
                                 .get('book/deleteBook',{

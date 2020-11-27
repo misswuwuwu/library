@@ -7,11 +7,10 @@
 
     
 </head>
-<body>
+<body style="background: gainsboro url(../img/_202011261642055.jpg) no-repeat fixed center;">
     <div class="box" id = app>
-        <img src="../img/register.png">
-        <h1>注册</h1>
-        <div display=inline-black class="div">
+        <h1 style="font-size: 50px">注册</h1>
+        <div display=inline-black class="div" style="color: white;font-size: 30px">
             <span>登录ID:&nbsp&nbsp&nbsp&nbsp
                 <input type="text" placeholder="登录ID" class="pwd" v-model="user_id" @keyup.enter="user_id_judge">
             </span>
@@ -19,7 +18,7 @@
                 <!-- {{user_id_pass}} -->
             <!-- </span> -->
         </div>
-        <div display=inline-black class="div">
+        <div display=inline-black class="div" style="color: white;font-size: 30px">
             <span>姓名:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 
                 <input type="text" placeholder="请输入注册姓名" class="pwd" v-model="user_name" @keyup.enter="user_name_judge">
@@ -28,7 +27,7 @@
                 <!-- {{user_name_pass}} -->
             <!-- </span> -->
         </div>
-        <div display=inline-black class="div">
+        <div display=inline-black class="div" style="color: white;font-size: 30px">
             <span>邮箱:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <input type=邮箱" placeholder="请输入邮箱" class="pwd" v-model="user_emil" @keyup.enter="user_emil_judge">
             </span> 
@@ -36,7 +35,7 @@
                 <!-- {{user_emil_pass}} -->
             <!-- </span> -->
         </div>
-        <div display=inline-black class="div">
+        <div display=inline-black class="div" style="color: white;font-size: 30px">
             <span>输入密码:
                 <input type="password" placeholder="请输入密码" class="pwd" v-model="user_password" @keyup.enter="user_pwd_judge">
             </span> 
@@ -44,7 +43,7 @@
                 <!-- {{user_password_pass}} -->
             <!-- </span> -->
         </div>
-        <div display=inline-black class="div">
+        <div display=inline-black class="div" style="color: white;font-size: 30px">
             <span>确认密码:
                 <input type="password" placeholder="确认密码" class="pwd" v-model="user_password_comfirm" @keyup.enter="user_pwd_comf_judge">
             </span> 
@@ -52,7 +51,7 @@
                 <!-- {{user_id_comfirm_pass}} -->
             <!-- </span> -->
         </div>
-        <button @click="login()">注册</button>
+        <button @click="login()" style="font-size: 30px">注册</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -91,7 +90,7 @@
                     })
                     .then((res) => {
                         console.log(res);
-                        if (res.data.flag) window.location.href="../main_menu.html";
+                        if (res.data.flag) window.location.href="../login/user_login.html";
                         else {
                             alert(res.data.msg);
                         }
@@ -133,7 +132,7 @@
                 if (this.user_password == null || this.user_password == "") {
                     this.err += "密码不能为空" + "\n";
                 } else if(this.user_password.length<8){
-                    this.err += "姓名长度不少于8"+"\n"
+                    this.err += "密码长度不少于8"+"\n"
                 }else if (!pwdRegex.test(this.user_password)) {
                     this.err += "密码需要大小字母，数字，特殊字符" + "\n";
                 }else if(this.user_password.length>30){

@@ -3,88 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主功能选择页面</title>
+    <title>text</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
-
-    <style>
-            /*图标引入*/
-    @font-face {
-    font-family: 'iconfont';
-    src: url('../font/iconfont.eot');
-    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
-        url('../font/iconfont.woff2') format('woff2'),
-        url('../font/iconfont.woff') format('woff'),
-        url('../font/iconfont.ttf') format('truetype'),
-        url('../font/iconfont.svg#iconfont') format('svg');
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<style>
+    *{
+        margin: 0;
+        padding: 0;
     }
-    .iconfont {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    }
-    .iconfont1 {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    }
-    /*图标引入*/
-        *{
-            margin: 0px;
-            padding: 0px;
+    body{
+            background-color:cadetblue;
         }
-        body{
-            background-color:#96f0ca;
-        }
-        table{
-            table-layout: fixed;
-        }
-        .nav{
-            width: 100%;
-            background-color: cadetblue;
-            height: 90px;
-        }
-        .main .nav .logo{
-            float: left;
-            
-        }
-        .main .nav .menu{
-            float: right;
-            top: -120px;
-            position: relative;
-        }
-        .main .nav img{
-            height: 80px;
-        }
-        .main .nav .list_menu .list_menu_ul{
-            width: 600px;
-            height: 70px;
-            display: inline-block;
-            margin-left: 30px;
-        }
-        .main .nav .list_menu li{
-            list-style: none;
-            float: left;
-        }
-        .list_menu_ul {
-            margin-top: 50px;
-        }
-        .list_menu_ul a{
-            color: #6c6c6c;
-        font-size: 13px;
+    a{
+        color: #000;
         text-decoration: none;
-        }
-        .list_menu_ul a:hover{
-            color: #f40;
-        }
+    }
+/* 结构部分 */
+    /* 头部导航栏 */
+    .el-submenu [class^=el-icon-]
+    {
+        margin-right: -1px;
+        margin-bottom: 5px;
+    }
+    /* 头部 */
+    .el-menu--horizontal>.el-menu-item{
+        height: 70px;
+    }
+    .el-menu--horizontal{
+        height: 70px;
+    }
+    .head_el_menu{
+        display: inline;
+        width: 320px;
+        height: 70px;
+        position: absolute;
+        right: 0px;
+    }
 
-        /* 表格 */
-        .table_box{
+    .el-submenu{
+        width: 300px;
+    }
+    .el-submenu__title{
+        height: 70px;
+    }
+
+    /* 头部导航栏 */
+    /* 侧面导航栏 */
+    .el-col-12{
+        width: 15%;
+    }
+    .el-row{
+        float: left;
+    }
+    /* 侧面导航栏 */
+/* 结构部分 */
+/* 内容部分 */
+    .transition-box {
+        margin-bottom: 10px;
+        width: 800px;
+    height: 569px;
+        border-radius: 4px;
+        background-color: #409EFF;
+        text-align: center;
+        padding: 40px 20px;
+        box-sizing: border-box;
+        margin-right: 20px;
+        font-size: 50px;
+
+    }
+    .transition-box div{
+        color: black;
+    }
+    /* .el-button_box{
+        position:absolute;
+        top: 20px;
+        left: 20px;
+    } */
+/* 内容部分 */
+/* 表格 */
+.table_box{
+            position: relative;
+            top: -41px;
+            left: -20px;
             margin: auto;
             width: 800px;
             height: 570px;
@@ -93,7 +95,7 @@
         }
         .table_top table{
             width: 100%;
-            background-color: #D0DDB7;
+            /* background-color: #D0DDB7; */
             text-align: center;
             
         }
@@ -150,141 +152,263 @@
             display: inline-block;
             text-align: center;
         }
-    </style>
+</style>
 </head>
 <body>
-    <div class="main" id="app">
-        <div class="nav">
-            <div class="logo"><a href="../main_menu.html"><img src="../img/logo.png"></a></div>
-            <div class="list_menu">
-                <ul class="list_menu_ul">
-                    <li>
-                        <span class="iconfont1 arrow">&#xe836;</span>
-                        <a href="#"><span class="FontList">用户列表</span></a>
-                    </li>
-                    <li>
-                        <span class="iconfont1 arrow">&#xe6f3;</span>
-                        <a href="#"><span class="FontList">图书借阅与归还</span></a>
-                    </li>
-                    <li>
-                        <span class="iconfont1 arrow">&#xe7f1;</span>
-                        <a href="#"><span class="FontList">书库</span></a>
-                    </li>
-                    <li>
-                        <span class="iconfont1 arrow">&#xe69b;</span>
-                        <a href="#"><span class="FontList">首页公告管理</span></a>
-                    </li>
-                    <li>
-                        <span class="iconfont1 arrow" >&#xe602;</span>
-                        <a href="#"><span class="FontList">图书借阅统计</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="contain">
-            <!-- 个人资料 -->
-            <div class="table_box">
-                <div class="table_top">
-                    <table>
+    <div id="app">
+            <!-- 结构部分 -->
+            <!-- 头部导航栏 -->
+            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                <el-menu-item index="1"><a href="../main_menu.html" style="font-size :20px;">主页面</a></el-menu-item>
+                <el-menu-item index="2" @click="change_quote" style="font-size:30px;">{{quote}}</el-menu-item>
+                    <span class="head_el_menu">
+                        <el-submenu index="3">
+                            <!-- <template slot="title">{{username}}</template> -->
+                            <template slot="title">
+                                <el-avatar icon="el-icon-user-solid"></el-avatar>
+                            {{username}}
+                            </template>
+                            <!-- 个人信息修改
+                            我的书架
+                            借阅书籍——书籍详情
+                            查阅书籍 
+                            个人借阅历史-->
+                            <el-menu-item index="3-1"><a href="#" >个人信息</a></el-menu-item>
+                            <el-menu-item index="3-2"><a href="#" >我的书架</a></el-menu-item>
+                            <el-menu-item index="3-3" @click="logoutDialogVisible=true" ><a href="#" >注销</a></el-menu-item>
+                            
+                        </el-submenu>
+                    </span>
+                    <!-- <el-menu-item index="3" disabled>消息中心</el-menu-item> -->
+                
+            </el-menu>
+            <!-- 头部导航栏弹窗 -->
+            <el-dialog
+                title="提示"
+                :visible="logoutDialogVisible"
+                width="30%">
+                    <span>是否退出登录</span>
+                    <span slot="footer" class="dialog-footer">
+                    <el-button @click="logoutDialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="logoutDialogVisible = false" @click="logout()">确 定</el-button>
+                </span>
+            </el-dialog>
+            <!-- 头部导航栏 -->
+            <!-- 侧面导航栏 -->
+            <el-row class="tac">
+                <el-col :span="12">
+                    <el-menu
+                    default-active="2"
+                    class="el-menu-vertical-demo"
+                    @open="left_nav_handleOpen"
+                    @close="left_nav_handleClose"
+                    background-color="#96f0ca"
+                    text-color="#fff"
+                    active-text-color="#ffd04b">
+                        <el-submenu index="1">
+                            <template slot="title">
+                                <i class="el-icon-menu"></i>
+                                <span>普通用户功能表</span>
+                            </template>
+                            <el-menu-item-group>
+                                <template slot="title">功能列表</template>
+                                <el-menu-item index="1-1"><a href="../searchbook_user.html" >图书库</a></el-menu-item>
+                                <el-menu-item index="1-2"><a href="../user_book.html" >我的书架</a></el-menu-item>
+                                <!--<el-menu-item index="1-3"><a href="searchbook_user.html" >借阅书籍</a></el-menu-item>-->
+                                <el-menu-item index="1-4"><a href="./user_information.html" >个人信息</a></el-menu-item>
+                                <el-menu-item index="1-5"><a href="../history/History.html" >借阅历史</a></el-menu-item>
+                            </el-menu-item-group>
+                        </el-submenu>
+                    <!--<el-submenu index="2">
+                        <template slot="title">
+                        <i class="el-icon-menu"></i>
+                        <span>管理员功能表</span>
+                        </template>
+                        <el-menu-item-group>
+                        <template slot="title">功能列表</template>
+                        <el-menu-item index="2-1"><a href="#" >用户列表</a></el-menu-item>
+                        <el-menu-item index="2-2"><a href="#" >图书借阅</a></el-menu-item>
+                        <el-menu-item index="2-3"><a href="#" >公告管理</a></el-menu-item>
+                        <el-menu-item index="2-4"><a href="#" >图书库</a></el-menu-item>
+                        <el-menu-item index="2-5"><a href="#" >图书借阅统计</a></el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>-->
+                    <el-submenu index="3">
+                        <template slot="title">
+                        <i class="el-icon-menu"></i>
+                        <span>数据统计表</span>
+                        </template>
+                        <span></span>
+                        <el-button @click="show2 = !show2" style="width: 100%;">隐藏数据</el-button>
+                    </el-submenu>
+                    </el-menu>
+                </el-col>
+            </el-row>
+            <!-- 侧面导航栏 -->
+            <!-- 结构部分 -->
+        <!-- 内容 -->
+        <!-- 统计图 -->
+        
+        <div>
+            <!-- <div class="el-button_box">
+            <el-button @click="show2 = !show2">显示数据</el-button>
+            </div> -->
+            <div style="display: flex; height: 100px;">
+                <transition name="el-zoom-in-center">
+                <div v-show="show2" class="transition-box" style="background-color: cornsilk;">
+                    <div class="table_box">
+                        <div class="table_top">
+                        <table>
+                            <tr>
+                                <td>个人资料</td>
+                            </tr>
+                        </table>
+                        </div>
+                    <!-- 个人信息 -->
+                        <div class="table_main">
+                        <table style="table-layout: fixed;">
+                           <!-- 第一行 -->
                         <tr>
-                            <td>个人资料</td>
+                            <td>姓名</td>
+    
+                            <td class="table_input_td"> <input type="text" name="" id="" class="table_input"v-model="name" @keydown="change_name">
+                            <td class="table_td"> {{name}}</td>
+                            </td>
+    
+                            <td>性别</td>
+    
+                            <td class="table_input_td">
+                                <input type="text" name="" id="" class="table_input"v-model="sex"></td>
+                            <td class="table_td">{{sex}}</td>
+    
+                            <td >
+                                年龄
+                            </td>
+                            <td class="table_input_td"><input type="text" name="" id="" class="table_input"v-model="age" @keydown="change_age"></td>
+                            <td class="table_td">{{age}}</td>
                         </tr>
-                    </table>
+                        <!-- 第二行 -->
+                        <tr>
+                            <td>邮箱</td>
+    
+                            <td class="table_input_td"><input type="text" name="" id="" class="table_input"v-model="email" @keydown="change_email"></td>
+                            <td class="table_td">{{email}}</td>
+                            
+    
+                            <td>出生年月</td>
+    
+                            <td class="table_input_td"><input type="text" name="" id="" class="table_input"v-model="brith" @keydown="change_brith"></td>
+                            <td class="table_td">{{brith}}</td>
+    
+                            <td >
+                                借阅ID
+                            </td>
+                            <td class="table_td_id">{{id}}</td>
+                        </tr>
+                        <!-- 第3行 -->
+                        <tr>
+                            <td>联系电话</td>
+    
+                            <td class="table_input_td"><input type="text" name="" id="" class="table_input"v-model="tel" @keydown="change_tel"></td>
+                            <td class="table_td">{{tel}}</td>
+    
+                            <td>居住地址</td>
+    
+                            <td class="table_input_td" colspan="3"><input type="text" name="" id="" class="table_input"v-model="address" @keydown="change_address"></td>
+                            <td class="table_td" colspan="3">{{address}}</td>
+                        </tr>
+                            
+                        <!-- 第4行 -->
+                        <tr>
+                            <td>个人描述</td>
+                            <td class="table_input_td" colspan="5"><input type="text" name="" id="" class="table_input"v-model="describe" @keydown="change_describe"></td>
+                            <td class="table_td" colspan="5">{{describe}}</td>
+                        </tr>
+                        <!-- 第5行 -->
+                        <tr>
+                            <td>修改密码</td>
+                            <td class="table_input_td" colspan="5"><input type="text" name="" id="" class="table_input" v-model="password" @keydown="change_password"></td>
+                            <td class="table_td" colspan="5"></td>
+                        </tr>
+                        <!-- 第6行 -->
+                        <tr>
+                            <td>确认密码</td>
+                            <td class="table_input_td" colspan="5"><input type="text" name="" id="" class="table_input" v-model="password_f" @keydown="change_password"></td>
+                            <td class="table_td" colspan="5"></td>
+                        </tr>
+                        <!-- 7 -->
+                        <tr>
+                            <td colspan="2"><input type="button" value="重置" class="input_button" style="background-color: white;"@click="clickresset"> </td>
+                            <td colspan="2"><input type="button" value="验证" class="input_button" style="background-color: white;"@click="clickcheck"> </td>
+                            <td colspan="1"><input type="button" value="提交" class="input_button" style="background-color: white;"@click ="sentinformation"> </td>
+                            <td colspan="1"><input type="button" value="修改" class="input_button" style="background-color: white;" @click ="clickchage"> </td>
+                        </tr>
+                        </table>
+                        </div>
+                    </div>
                 </div>
-                <!-- 个人信息 -->
-                <div class="table_main">
-                    <table style="table-layout: fixed;">
-                       <!-- 第一行 -->
-                    <tr>
-                        <td>姓名</td>
-
-                        <td class="table_input_td"> <input type="text" name="" id="" class="table_input"v-model="name" @keydown="change_name">
-                        <td class="table_td"> {{name}}</td>
-                        </td>
-
-                        <td>性别</td>
-
-                        <td class="table_input_td">
-                            <input type="text" name="" id="" class="table_input"v-model="sex"></td>
-                        <td class="table_td">{{sex}}</td>
-
-                        <td >
-                            年龄
-                        </td>
-                        <td class="table_input_td"><input type="text" name="" id="" class="table_input"v-model="age" @keydown="change_age"></td>
-                        <td class="table_td">{{age}}</td>
-                    </tr>
-                    <!-- 第二行 -->
-                    <tr>
-                        <td>邮箱</td>
-
-                        <td class="table_input_td"><input type="text" name="" id="" class="table_input"v-model="email" @keydown="change_email"></td>
-                        <td class="table_td">{{email}}</td>
-                        
-
-                        <td>出生年月</td>
-
-                        <td class="table_input_td"><input type="text" name="" id="" class="table_input"v-model="brith" @keydown="change_brith"></td>
-                        <td class="table_td">{{brith}}</td>
-
-                        <td >
-                            借阅ID
-                        </td>
-                        <td class="table_td_id">{{id}}</td>
-                    </tr>
-                    <!-- 第3行 -->
-                    <tr>
-                        <td>联系电话</td>
-
-                        <td class="table_input_td"><input type="text" name="" id="" class="table_input"v-model="tel" @keydown="change_tel"></td>
-                        <td class="table_td">{{tel}}</td>
-
-                        <td>居住地址</td>
-
-                        <td class="table_input_td" colspan="3"><input type="text" name="" id="" class="table_input"v-model="address" @keydown="change_address"></td>
-                        <td class="table_td" colspan="3">{{address}}</td>
-                    </tr>
-                        
-                    <!-- 第4行 -->
-                    <tr>
-                        <td>个人描述</td>
-                        <td class="table_input_td" colspan="5"><input type="text" name="" id="" class="table_input"v-model="describe" @keydown="change_describe"></td>
-                        <td class="table_td" colspan="5">{{describe}}</td>
-                    </tr>
-                    <!-- 第5行 -->
-                    <tr>
-                        <td>修改密码</td>
-                        <td class="table_input_td" colspan="5"><input type="text" name="" id="" class="table_input" v-model="password" @keydown="change_password"></td>
-                        <td class="table_td" colspan="5"></td>
-                    </tr>
-                    <!-- 第6行 -->
-                    <tr>
-                        <td>确认密码</td>
-                        <td class="table_input_td" colspan="5"><input type="text" name="" id="" class="table_input" v-model="password_f" @keydown="change_password"></td>
-                        <td class="table_td" colspan="5"></td>
-                    </tr>
-                    <!-- 7 -->
-                    <tr>
-                        <td colspan="2"><input type="button" value="重置" class="input_button" style="background-color: turquoise;"@click="clickresset"> </td>
-                        <td colspan="2"><input type="button" value="验证" class="input_button" style="background-color: yellowgreen;"@click="clickcheck"> </td>
-                        <td colspan="1"><input type="button" value="提交" class="input_button" style="background-color: deeppink;"@click ="sentinformation"> </td>
-                        <td colspan="1"><input type="button" value="修改" class="input_button" style="background-color: rgb(224, 224, 51);" @click ="clickchage"> </td>
-                    </tr>
-                    </table>
-                </div>
+                </transition>
+                <!-- <transition name="el-zoom-in-center">
+                    <div v-show="show2" class="transition-box" style="background-color: cornsilk;">
+                    </div>
+                </transition> -->
             </div>
         </div>
+        
+    <!-- 内容 -->
     </div>
-
-
     <script>
         const app = new Vue({
             el:"#app",
             data() {
                 return {
+                    // 用户个人信息
+                    login_id:"用户ID",
+                    username:"用户操作",
+                    password:"密码",
+                    email:"邮箱",
+                    age:"年龄",
+                    birthday:"生日",
+                    phone:"手机",
+                    address:"地址",
+                    gender:"性别",
+                    describes:"描述",
+                    //用户个人信息
+
+                    //登录状态
+                    user_status:"",
+
+                    //页面效果
+                    logoutDialogVisible:false,
+                    activeIndex: '1',
+                    activeIndex2: '1',
+                    centerDialogVisible: false,
+                    quote:"因依老宿发心初，半学修心半读书。——王建《寄旧山僧》",
+                    quotes:['书以陶性情，诗以养静观————郭沫若《潮汐集·有赠》',
+                        '田中读书慕尧舜，坐待四海升平年。——高启《练圻老人农隐》',
+                    '因依老宿发心初，半学修心半读书。——王建《寄旧山僧》',
+                    '粗缯大布裹生涯，腹有诗书气自华。——苏轼《和董传留别》',
+                    '我闭南楼看道书，幽帘清寂在仙居。——李白《早秋单父南楼酬窦公衡》',
+                    '奚童悄向舆夫语，莫典春衣又买书？——潘际云《厂桥》',
+                    '窗间白发催愁境，烛底苍头劝读书。——汤显祖《正觉寺示弟儒祖》',
+                    '萧索空宇中，了无一可悦！历览千载书，时时见遗烈。——陶渊明《癸卯岁十二月中作与从弟敬远》',
+                    '地炉茶鼎烹活火，一清足称读书者。读书之乐何处寻？数点梅花天地心。——翁森《四时读书乐》',
+                    '二客东南名胜，万卷诗书事业，尝试与君谋。——辛弃疾《水调歌头·舟次扬州和人韵》',
+                    '书多笔渐重，睡少枕长新。——姚合《别贾岛》',
+                    '书卷多情似故人，晨昏忧乐每相亲。——于谦《观书》',
+                    '读书切戒在慌忙，涵泳工夫兴味长。——陆九渊《读书》',
+                    '诗非易作须勤读，琴亦难精莫废弹。——刘克庄《赠玉隆刘道士》'],
+                    //统计图数据
+                        //效果
+                    show2: false,
+                        //
+                    
+                    // 内容
+                    //个人信息
+                    
                     name:'山鸡',
                     sex:'男',
-                    age:18,
+                    age:'18',
                     email:'99999@qq.com',
                     brith:'1999-1-1',
                     id:'WYU',
@@ -296,14 +420,50 @@
                     register:this.register,
                     flag:false,
                     err:''
-                }
-            },
-            //周期函数
-            mounted() {
-                //启动axios获取数据
-                this.getinformation();
+                    //内容
+                };
             },
             methods: {
+                //头部导航栏点击
+                handleSelect(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                
+                change_quote(){
+                    this.quote=this.quotes[(Math.random()*10).toFixed(0)];
+                },
+                //退出登录
+                logout(){
+                    // 发送退出登录信息
+                    this.user_status="",
+                    axios
+                    .get('http://192.168.1.79:8080/LibraryManageSystem/user/findAll',{
+                        input_value:input_value
+                    })
+                    .then((res)=>{
+                        this.textData=res
+                    })
+                    .finally(()=>{console.log("获取搜索执行完毕");})
+                },
+                //侧面导航栏打开
+                left_nav_handleOpen(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                //侧面导航栏关闭
+                left_nav_handleClose(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+            //     //鼠标浮动
+            //     el_menu_item_over(){
+            //         console.log(this.$refs.el_menu_item);
+            //     },
+            //     //鼠标移除
+            //     el_menu_item_out(){
+            //         let el_menu_item=this.$refs.el_menu_item;
+            //         console.log(el_menu_item);
+            //     }
+               
+            
                 // 交互
                 getinformation(){
                 axios
@@ -389,13 +549,12 @@
                         this.err += "邮箱长度不多于30"+"\n"
                     }
                     
+                    let pwd=this.password == null || this.password == ""
                     // 密码判断
-                    let pwdRegex = /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)(?![a-zA-z\d]+$)(?![a-zA-z!@#$%^&*]+$)(?![\d!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/;
-                    if (this.password == null || this.password == "") {
-                        this.err += "密码不能为空" + "\n";
-                    }else if (!pwdRegex.test(this.password)) {
+                    let pwdRegex = new RegExp('(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^a-zA-Z0-9]).{8,30}');
+                    if ((!pwdRegex.test(this.password))&&(!pwd)) {
                         this.err += "密码需要大小字母，数字，特殊字符" + "\n";
-                    }else if(this.password.length>30){
+                    }else if(this.password.length>30&&(!pwd)){
                         this.err += "姓名长度不多于30"+"\n"
                     }
                     //密码确认
@@ -426,12 +585,10 @@
                     console.log(this.age)
                     if(this.err !=""){
                         alert(this.err);
-                        // location.reload();
+                        location.reload();
                         return false;
                     }else{
-                        // alert("通过验证，请点击提交")
-                        // this.sentinformation()
-                        return true
+                        return true;
                     }
                 },
                 //长度验证
@@ -463,10 +620,8 @@
                     }},
                 //提交
                 sentinformation:function(){
-                    this.age =this.age+'';
-                    console.log(typeof this.age);
-
                     if(this.clickcheck()){
+                        console.log(this.clickcheck());
                         axios
                             .post('../user/updateUser',
                             {
@@ -496,11 +651,20 @@
                             })
                         .finally(()=>{console.log("获取公告执行完毕");})
                     }else{
-                    // location.reload();
+                    location.reload();
                 }
                 },
                 
-            }
+            
+            
+            },
+            mounted() {
+                //页面效果
+                let timer1 =setTimeout(()=>{this.show2=!this.show2},500)
+                let timer2 =setInterval(()=>{this.change_quote()},10000)
+                this.getinformation();
+            },
+            
         })
     </script>
 </body>

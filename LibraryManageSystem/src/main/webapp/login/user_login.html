@@ -7,23 +7,22 @@
 
     
 </head>
-<body>
+<body style="background: gainsboro url(../img/login_user_bg.jpg) no-repeat fixed center;">
 
     <div class="box" id = app>
-        <img src="../img/signup.png">
-        <h1>用户登陆</h1>
-        <div display=inline-black class="div">
+        <h1 style="font-size: 50px;">用户登陆</h1>
+        <div display=inline-black class="div" style="color: white;font-size: 30px">
             <span>用户名:
                 <input type="text" placeholder="请输入学号" class="pwd" v-model="user_id" @keydown="limit_num">
             </span>
         </div>
-        <div display=inline-black class="div">
+        <div display=inline-black class="div" style="color: white;font-size: 30px">
             <span>密码:&nbsp&nbsp&nbsp
                 <input type="password" placeholder="请输入密码" class="pwd" v-model="user_password" @keydown="limit_num">
             </span> 
         </div>
         
-        <button @click="login()">登陆</button>
+        <button @click="login()" >登陆</button>
         <!-- <a href="D:\web frond-end\111\界面2显示.html">
             <button>管理者登陆跳转</button>
         </a>

@@ -1,101 +1,125 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>text</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <style lang="">
-        *{
-            margin: 0px;
-            padding: 0px;
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+            background-color:cadetblue;
         }
-        body{
-            background-color:#96f0ca;
-        }
-        /* 导航栏 */
-        .nav{
-            width: 100%;
-            background-color: cadetblue;
-            height: 90px;
-        }
-        .main .nav .logo{
-            float: left;
-            
-        }
-        .main .nav .menu{
-            float: right;
-            top: -120px;
-            position: relative;
-        }
-        .main .nav img{
-            height: 80px;
-        }
-        .main .nav .list_menu .list_menu_ul{
-            width: 830px;
-            height: 60px;
-            display: inline-block;
-        }
-        .main .nav .list_menu li{
-            width: 160px;
-            height: 65px;
-            list-style: none;
-            float: left;
-            font-size: 26px;
-            padding-top: 20px;
-            margin-right: 6px;
-        }
-        /* .list_menu_ul {
-            margin-top: 33px;
-        } */
+    a{
+        color: #000;
+        text-decoration: none;
+    }
+/* 结构部分 */
+    /* 头部导航栏 */
+    .el-submenu [class^=el-icon-]
+    {
+        margin-right: -1px;
+        margin-bottom: 5px;
+    }
+    /* 头部 */
+    .el-menu--horizontal>.el-menu-item{
+        height: 70px;
+    }
+    .el-menu--horizontal{
+        height: 70px;
+    }
+    .head_el_menu{
+        display: inline;
+        width: 320px;
+        height: 70px;
+        position: absolute;
+        right: 0px;
+    }
 
-        .list_menu_ul li:hover{
-            border-bottom: blue 5px solid;
-            color: blue;
+    .el-submenu{
+        width: 300px;
+    }
+    .el-submenu__title{
+        height: 70px;
+    }
+
+    /* 头部导航栏 */
+    /* 侧面导航栏 */
+    .el-col-12{
+        width: 15%;
+    }
+    .el-row{
+        float: left;
+    }
+    .tac{
+        height: 800px;
+    }
+    /* 侧面导航栏 */
+/* 结构部分 */
+/* 内容部分 */
+    .transition-box {
+        /* margin-bottom: 10px; */
+        width: 500px;
+        height: 250px;
+        border-radius: 4px;
+        background-color: #409EFF;
+        text-align: center;
+        padding: 40px 20px;
+        box-sizing: border-box;
+        margin-right: 20px;
+        font-size: 40px;
+
+    }
+    /* 分页 */
+    .el-pagination{
+        height: 40px;
+    }
+    /* 弹窗一 */
+    
+    /* 弹窗二 */
+    .el-dialog{
+        width: 66%;
+        height:50%;
+    }
+    .el_dialog_form2{
+        /* float:right */
+        /* margin: auto; */
+    }
+    .el-dialog__body{
+        /* margin:auto; */
+        padding: 0px 100px;
+    }
+    .el-form-item{
+        width: 300px;
+        height: 35px;
+        display: inline-block;
+    }
+    .el_dialog_btn2{
+        position: relative;
+        left: 830px;
+        top: 0px;
+    }
+    .el-textarea__inner{
+        height: 130px;
+    }
+        .el-form-item__content{
+            width: 100px;
         }
-        /* histooy */
-        .nav_history{
-            width: 1150px;
-            height: 565px;
-            margin: auto;
-            /* background-color: chartreuse; */
+        .el_dialog_input2{
+            margin-top: 20px;
         }
-        /* history_search */
-        .nav_history_search{
-            margin-bottom: 10px;
-            width: 291px;
-            
-            float: right;
-            font-size: 0px;
-        }
-        .el-input .el-icon-search{
-            float: right;
-        }
-        .el-input{
-            width: 300px;
-        }
-        .el-button--primary{
-            background-color: rgb(105, 207, 119);
-        }
-        /* history_contain */
-        .cell{
-            text-align: center;
-        }
-        /*分页*/
-        .block{
-            position:absolute;
-            top: 635px;
-            left: 800px;
-        }
-        /*  */
+    /* 弹窗二 */
+            /*  */
 .dialog{
     z-index:1000;
     width:900px;
-    height:400px;
+    height:480px;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     position:absolute;
@@ -114,55 +138,10 @@
         border: 1px solid #eee;
         margin-left: 20px;
     }
-    .dialog .close{
-    position: relative;
-    top: -210px;
-    right: -370px;
-    }
-    .dialog .btn{
-        position: relative;
-        top: 20px;
-        right:30px;     
-    }
 
-    .dialog .jieshao{
-        position: relative;
-        top: 60px;
-        right: 183px;
-    }
-    .dialog .jieshao h3{
-        margin-left: 40px;
-    }
-    .dialog .information p{
-        margin-left: 30px ;
-        margin-top: 20px;
-        text-align: center;
-    }
-    .dialog .n1{
-        position: relative;
-        top: -45px;
-        right: -100px;
-    }
-    .dialog .n2{
-        position: relative;
-        top: -50px;
-        right: -150px;
-    }
-    .dialog .n3{
-        position: relative;
-        top: 48px;
-        right: 110px;
-    }
-    .dialog .m2{
-        position: relative;
-        top: -10px;
-        right: -71px;
-    }
-    .dialog .m3{
-        position: relative;
-        top: 90px;
-        right: 168px;
-    }
+
+
+    
     .omenu{
         position: relative;
         top: -270px;
@@ -177,8 +156,23 @@
         height: 100px;
         position: relative;
         right: -40px;
-        top: 20px;
+        top: -50px;
 
+    }
+    .oBorder1_title{
+        /* 借阅记录 */
+        margin-top: 50px;
+        font-size: 30px;
+        /* 借阅记录 */
+
+    }
+    .oBorder1_edit{
+        width: 800px;
+        height: 100px;
+        position: relative;
+        right: -40px;
+        /* 借阅记录 */
+        font-size: 30px;
     }
     .oBorder2{
         width: 800px;
@@ -188,20 +182,19 @@
         top: 40px;
 
     }
-    .oBorder3{
-        width: 700px;
-        height: 150px;
+
+    .dialog_table_box1{
         position: relative;
-        right: -40px;
         top: 60px;
     }
-    .dialog_table_box{
+    .dialog_table_box2{
         position: relative;
-        top: 60px;
+        width: 100%;
+        top: 15px;
     }
     .el-input{
         
-        width: 200px;
+        width: 200px; 
     }
     .dialog_table_box_btn{
         position: relative;
@@ -211,437 +204,593 @@
         top: 30px;
         left: 660px;
     }
-    /* 弹出页面窗口 */
-    /* nav-min多选搜索 */
-    .nav_mid{
-        width: 1150px;
-
-        margin:10px auto;
+    /* 弹窗一 */
+    .transition-box div{
+        color: black;
     }
-    .nav_mid td{
-        display: inline-block;
-        width: 250px;
-    }
-    /* nav-min多选搜索 */
-
-    /* mybooktable */
-    .my_book_list li{
-        margin: auto;
-        list-style: none;
-        width: 700px;
-    }
-    .my_book_head_borrowed{
-        margin-left: 55px;
-        margin-top: 20px;
-        line-height: 25px;
-        display: inline-block;
-        font-size: 25px;
-    }
+    /*  */
     .my_book_head_btn{
         margin-top: 13px;
         float:right;
     }
-    .my_book_list_body{
-        margin-top: 20px;
-        width: 100%;
-        height: 200px;
-        background-color: white;
-    }
-    /*  */
+/* 内容部分 */
 </style>
 </head>
-<div class="main History" id=app>
-    <div class="nav">
-        <div class="logo"><a href="main_menu.html"><img src="./img/logo.png"></a></div>
-        <div class="list_menu">
-            <ul class="list_menu_ul">
-                <li>
-                    用户列表
-                </li>
-                <li>
-                    图书借阅
-                </li>
-                <li>
-                    书库
-                </li>
-                <li>
-                    首页公告管理
-                </li>
-                <li>
-                    借阅统计
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="nav_history">
-         <div class="nav_history_contain">
-             
-             <ul class="my_book_list">
-                 <li v-for="(item,index) in borrow_books" :key="index">
-                    
-                    <div class="my_book_list_head">
-                        <div class="my_book_head_borrowed">{{user_book_status}}</div>
-                        <!-- <div></div> -->
-                        <el-button type="primary" icon="el-table-detail" @click=" click_return_book(index)" class="my_book_head_btn">还书</el-button>
-                    </div>
-                    <div class="my_book_list_body">
-                        {{item.bname}}
-                        <br>
-                        借阅时间：{{item.startDate}}
-                        <br>
-                        应归还时间：{{item.endDate}}
-                        <!--<br>
-                        {{item.username}}
-                        <br>
-                        {{item.address}}
-                        <br>
-                        {{item.on_shelf}}-->
-                    </div>
-                 </li>
-             </ul>
-                <!-- <template  slot-scope="scope">
-                    <el-button type="primary" icon="el-table-detail" @click="click_return_book(scope.$index,scope.row)">编辑</el-button>
-                </template> -->
-        </div>
-    </div>
-</div>
-    <script>
-    const app = new Vue({
-        el:"#app",
-        data() {
-        return {
-            input_value:"",
-            //显示第几页
-            currentPage:1,
-            //总数据多少条
-            totalCount:1,
-            //选择条数
-            pageSizes:[1,2,3,4,5],
-            // 默认每页显示的条数
-            pageSize:7,
-            //是否显示值value
-            value:false,
-            //总页数
-            pageCount:2,
-            //
-            tableData: [],
-            //测试数据
-            // 书籍信息
-            bid:1,
-            bname:"书名",
-            country:"国家",
-            type:"类别",
-            available:"剩余",
-            unavailable:"无书",
-            topic:"主题",
-            length:"篇幅",
-            introduction:"简介",
-            on_shelf:"上架时间",
-            status:"状态",
-            start_date:"开始日期",
-            end_date:"归还日期",
-            is_return:"是否已归还",
-            last_date:"剩余归还时间",
-            //书籍信息
-            textBook:[],
-            //书籍信息
-            //个人信息
-            login_id:"用户ID",
-            username:"用户姓名",
-            password:"密码",
-            email:"邮箱",
-            age:"年龄",
-            birthday:"生日",
-            phone:"手机",
-            address:"地址",
-            gender:"性别",
-            describes:"描述",
-            user_book_status:"已经借阅书籍",
-            //个人信息
-
-            //书籍信息弹窗
-            binformation: [{
-                value: '选项1',
-                label: '黄金糕'
-                }, {
-                value: '选项2',
-                label: '双皮奶'
-                }, {
-                value: '选项3',
-                label: '蚵仔煎'
-                }, {
-                value: '选项4',
-                label: '龙须面'
-                }, {
-                value: '选项5',
-                label: '北京烤鸭'
-                }],
-            //书籍信息弹窗
-            dis:1,
-            textData:[
-            {
-                bname: '莎士比亚没有士',
-                name: '莎比',
-                address: '上海市普陀区金沙江路 1518 弄',
-                on_shelf:"上架时间"
-            },
-            {
-                bname: '生子当如孙仲谋,十万精兵送合肥',
-                name: '孙十万',
-                address: '上海市普陀区金沙江路 1518 弄',
-                on_shelf:"上架时间"
-            },
-            {
-                bname: '爱因斯坦不过如此',
-                name: '陈伟涛',
-                address: '上海市普陀区金沙江路 1518 弄',
-                on_shelf:"上架时间"
-            },
-            {
-                bname: '42016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄',
-                on_shelf:"上架时间"
-            },
-            {
-                bname: '52016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            },
-            {
-                bname: '62016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            },
-            {
-                bname: '72016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            },
-            {
-                bname: '只要你够丑',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            },
-            {
-                bname: '虎大佬比',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            }],
-            //借阅书籍
-            borrow_books:[
-                {
-                bname: '莎士比亚没有士',
-                name: '莎比',
-                address: '上海市普陀区金沙江路 1518 弄',
-                on_shelf:"上架时间"
-            },
-            {
-                bname: '生子当如孙仲谋,十万精兵送合肥',
-                name: '孙十万',
-                address: '上海市普陀区金沙江路 1518 弄',
-                on_shelf:"上架时间"
-            }
-            ]
-
-            }
-        },
-        methods: {
-            //显示多少页码
-            //判断总共多少条——总共total/页显示数size
-            // handlePageCount(val=this.pageCount){
-            //     this.pageCount=parseInt((this.textData.length)/this.pageSize)+1;
-            //     console.log("handlePagecount");
-            //     return val
-            // },
-            //每页多少条
-            handleSizeChange(val=7) {
-                console.log(`每页 ${val} 条`);
-                return val
-            },
-            //显示第几页
-            handleCurrentChange(val) {
-                this.currentPage=val
-                console.log(this.currentPage);
-                this.handleData(this.textData);
-                return val
-            },
-            //数据处理
-            handleData(Data){
-                //返回当前页数，呈现的数据条
-                //清空tableData
-                this.tableData=[];
-                //数据长度返回给this
-                this.totalCount=Data.length;
-                //判断textlist多少条——Data.length
-                this.pageCount= parseInt(Data.length/this.pageSize)+1;
-                //
-                //    pagecount= page Data.length/this.pageSize获取到页码数
-                if (this.pageCount== this.currentPage) {
-                    //最后一页判断需要输出多少位
-                    //判断最后一页多少个
-                    for (let index = 0; index < (Data.length%this.pageSize); index++) {
-                        this.tableData.push(Data[((this.pageCount-1)*this.pageSize)+index])                        
-                    }
-                }else{
-                    //当前的页数
-                    for (let index = 0; index < this.pageSize; index++) {
-                        this.tableData.push(Data[((this.currentPage-1)*this.pageSize)+index])                        
-                    }
-                }
-                //前面的页码数直接输出7位
-                //
-                // this.handleSizeChange
-            },
-            //搜索交互
-            search(){
-                // 交互
-               axios
-                    .get('http://192.168.1.79:8080/LibraryManageSystem/user/findAll',{
-                        input_value:input_value
-                    })
-                    .then((res)=>{
-                        this.textData=res
-                    })
-                    .finally(()=>{console.log("获取搜索执行完毕");})
-            },
-            // 列表交互
-            history_list(){
-                axios
-                    .get('user/findBorrowing',{
-                    })
-                    .then((res)=>{
-                        this.borrow_books=res.data;
-                    })
-                    .finally(()=>{console.log("获取历史表获取执行完毕");})
-            },
-            click_detail(index,row){
-                this.dis+=1;
-                let ref_display=this.$refs.dialog_table.style;
-                console.log(row.bname);
-                //交互
-                this.detail_list(row.bname);
-                // console.log(ref_display);
-                //默认dis=0——不显示
-                if (this.dis%2==0) {
-                    //显示
-                    ref_display.display="block";
-                }else{
-                    ref_display.display="none";
-                }
-            },
-            //点击还书交互
-            click_return_book(index)
-            {
-                console.log(index);
-                axios
-                    .get('user/return',{
-                        params:{
-                            bname:this.borrow_books[index].bname
-                        }
-                        // 书名+ID
-                    })
-                    .then((res)=>{
-                        //判断长度不够三填充未借书籍
-                        /*while(res.Data.length<3){
-                            res.Data.push({
-                                bname: '',
-                                name: '',
-                                address: '',
-                                on_shelf:""
-                                })
-                        }
-                        handleData(res.Data);*/
-                        if (res.data.flag) location.reload();
-                        else alert("还书失败");
-                    })
-                    .finally(()=>{console.log("还书执行完毕");})
-            },
-            //详情交互
-            detail_list(bname){
-                axios
-                    .get('http://192.168.1.79:8080/LibraryManageSystem/user/findAll',{
-                        // 书名+ID
-                        bname:bname,
-                        login_id:this.login_id,
-                    })
-                    .then((res)=>{
-                        //接收的内容
-                        this.username=res.username;
-                        this.username=res.username;
-                        this.username=res.username;
-                        this.username=res.username;
-                        this.username=res.username;
-                    })
-                    .finally(()=>{console.log("获取历史表获取执行完毕");})
-            },
-            //点击保存交互
-            click_keep(){
-                // 交互
-               axios
-                    .get('http://192.168.1.79:8080/LibraryManageSystem/user/findAll',{
-                        bname:this.bname,
-                        country:this.country,
-                        type:this.type,
-                        available:this.available,
-                        topic:this.topic,
-                        length:this.length,
-                        unavailable:this.unavailable
-                    })
-                    .then((res)=>{
-                        // this.textData=res
-                        console.log(res);
-                    })
-                    .finally(()=>{console.log("提交执行完毕");})
-            },
-            //多标签查询交互
-            click_mul(){
-                 axios
-                    .get('http://192.168.1.79:8080/LibraryManageSystem/user/findAll',{
-                        country:this.country,
-                        type:this.type,
-                        length:this.length,
-                        topic:this.topic,
-                    })
-                    .then((res)=>{
-                        // this.textData=res
-                        console.log(res);
-                    })
-                    .finally(()=>{console.log("提交执行完毕");})
-            },
-            // a(){
-            //     //实际长度
-            //     let l=this.borrow_books.length
-            //     //需要遍历长度——0-到3
-            //     let i=-1;
-            //     //变化后
-            //      while(i<3){
-            //         if (l+1) {
-            //             this.user_book_status="已经借阅书籍";
-            //             l--;
-            //             i++;
-            //             ()=>{}
-            //         }else{
-            //             this.user_book_status="没有借阅书籍"
-            //             this.borrow_books.push({
-            //                 bname: '',
-            //                 name: '',
-            //                 address: '',
-            //                 on_shelf:""
-            //             })
-            //             i++;
-            //         }
-            //    }
-            // }
-        },
-        //周期函数
-        mounted() {
-            this.history_list();
-            this.handleData(this.textData);
-            this.totalCount=this.textData.length;
+<body>
+    <div id="app">
+            <!-- 结构部分 -->
+            <!-- 头部导航栏 -->
+            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                <el-menu-item index="1"><a href="main_menu.html" style="font-size :20px;">主页面</a></el-menu-item>
+                <el-menu-item index="2" @click="change_quote" style="font-size:30px;">{{quote}}</el-menu-item>
+                    <span class="head_el_menu">
+                        <el-submenu index="3">
+                            <!-- <template slot="title">{{username}}</template> -->
+                            <template slot="title">
+                                <el-avatar icon="el-icon-user-solid"></el-avatar>
+                            {{username}}
+                            </template>
+                            <!-- 个人信息修改
+                            我的书架
+                            借阅书籍——书籍详情
+                            查阅书籍 
+                            个人借阅历史-->
+<!--                            <el-menu-item index="3-1"><a href="#" >个人信息</a></el-menu-item>-->
+<!--                            <el-menu-item index="3-2"><a href="#" >我的书架</a></el-menu-item>-->
+                            <el-menu-item index="3-3" @click="logoutDialogVisible=true" ><a href="#" >退出登录</a></el-menu-item>
+                            
+                        </el-submenu>
+                    </span>
+                    <!-- <el-menu-item index="3" disabled>消息中心</el-menu-item> -->
+                
+            </el-menu>
+            <!-- 头部导航栏弹窗 -->
+            <el-dialog
+                title="注意"
+                :visible.sync="logoutDialogVisible"
+                width="30%"
+                style="height:30%">
+                    <span>是否退出登录</span>
+                <span slot="footer" class="dialog-footer" @click="logoutDialogVisible = false"></span>
+                    <el-button @click="logoutDialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="logout">确 定</el-button>
+            </el-dialog>
+            <!-- 头部导航栏 -->
+            <!-- 侧面导航栏 -->
+            <el-row class="tac">
+                <el-col :span="12">
+                    <el-menu
+                    default-active="2"
+                    class="el-menu-vertical-demo"
+                    @open="left_nav_handleOpen"
+                    @close="left_nav_handleClose"
+                    background-color="#96f0ca"
+                    text-color="#fff"
+                    active-text-color="#ffd04b">
+                   <el-submenu index="1">
+                        <template slot="title">
+                        <i class="el-icon-menu"></i>
+                        <span>普通用户功能表</span>
+                        </template>
+                        <el-menu-item-group>
+                        <template slot="title">功能列表</template>
+                        <el-menu-item index="1-1"><a href="searchbook_user.html" >查阅书籍</a></el-menu-item>
+                        <el-menu-item index="1-2"><a href="user_book.html" >我的书架</a></el-menu-item>
+                        <!--<el-menu-item index="1-3"><a href="searchbook_user.html" >借阅书籍</a></el-menu-item>-->
+                        <el-menu-item index="1-4"><a href="./information/user_information.html" >个人信息</a></el-menu-item>
+                        <el-menu-item index="1-5"><a href="./history/History.html" >借阅历史</a></el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <!-- <el-submenu index="2">
+                        <template slot="title">
+                        <i class="el-icon-menu"></i>
+                        <span>管理员功能表</span>
+                        </template>
+                        <el-menu-item-group>
+                            <template slot="title">功能列表</template>
+                            <el-menu-item index="2-1"><a href="User_list.html">用户列表</a></el-menu-item>
+                            <el-menu-item index="2-2"><a href="./searchbook_admin.html" >图书借阅</a></el-menu-item>
+                            <el-menu-item index="2-3"><a href="./announce.html" >公告管理</a></el-menu-item>
+                            <el-menu-item index="2-4"><a href="./managebook_admin.html" >图书库</a></el-menu-item>
+                            <el-menu-item index="2-5"><a href="./count.html" >图书借阅统计</a></el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu> -->
+                    <el-submenu index="3">
+                        <template slot="title">
+                        <i class="el-icon-menu"></i>
+                        <span>操作标图</span>
+                        </template>
+                        <span></span>
+                        <el-button @click="show2 = !show2" style="width: 100%;">隐藏操作表</el-button>
+                    </el-submenu>
+                    </el-menu>
+                </el-col>
+            </el-row>
+            <!-- 侧面导航栏 -->
+            <!-- 结构部分 -->
+        <!-- 内容 -->
+        <!-- -->
+        
+        <div>
             
-        }
-    })
-        </script>
+            <!-- 主要内容 -->
+                <div style="display: flex; height: 270px;margin-top: 8px;" v-for="(item,index) in borrow_books" :key="index">
+                    <transition name="el-zoom-in-bottom">
+                        <div v-show="show2" class="transition-box" style="background-color:gainsboro;width: 1582px;height: 100%;padding:20px 20px;">
+                            <div class="my_book_list_head">
+                                <div class="my_book_head_borrowed">{{user_book_status}}</div>
+                                <!-- <div></div> -->
+                                <el-button type="primary" icon="el-table-detail" @click=" click_return_book(index)" class="my_book_head_btn">还书</el-button>
+                            </div>
+                            <div class="my_book_list_body">
+                                {{item.bname}}
+                                <br>
+                                借阅时间：{{item.startDate}}
+                                <br>
+                                应归还时间：{{item.endDate}}
+                                <!--<br>
+                                {{item.username}}
+                                <br>
+                                {{item.address}}
+                                <br>
+                                {{item.on_shelf}}-->
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+                <div style="display: flex; height: 270px;margin-top: 8px;" v-for="index in borrow_books_length" :key="index">
+                    <transition name="el-zoom-in-bottom">
+                        <div v-show="show2" class="transition-box" style="background-color:gainsboro;width: 1582px;height: 100%;padding:20px 20px;">
+                            <div>无借阅书籍</div>
+                        </div>
+                    </transition>
+                </div>
+        </div>
+        
+    <!-- 内容 -->
+    </div>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data() {
+                return {
+                    // 搜索多标签属性
+                    mul_search:{
+                        country:"",
+                        type:"",
+                        length:"",
+                        topic:"",
+                    },
+                    // 搜索多标签属性
+                    //修改书籍属性
+                    change_book:{
+                        country:"",
+                        type:"",
+                        length:"",
+                        topic:"",
+                        countshelf:"",
+                        introduction:"",
+                    },
+                    //修改书籍属性
+                    //添加书籍属性
+                    add_book:{
+                        country:"",
+                        type:"",
+                        length:"",
+                        topic:"",
+                        countshelf:"",
+                        introduction:"",
+                    },
+                    //添加书籍属性
+                    // 用户个人信息
+                    login_id:"用户ID",
+                    username:"用户操作",
+                    password:"密码",
+                    email:"邮箱",
+                    age:"年龄",
+                    birthday:"生日",
+                    phone:"手机",
+                    address:"地址",
+                    gender:"性别",
+                    describes:"描述",
+                    //用户个人信息
+                    // 书籍信息
+                    bid:1,
+                    bname:"",
+                    country:"",
+                    type:"",
+                    available:"",
+                    unavailable:"",
+                    countshelf:"",
+                    topic:"",
+                    length:"",
+                    introduction:"",
+                    on_shelf:"上架时间",
+                    status:"状态",
+                    start_date:"开始日期",
+                    end_date:"归还日期",
+                    is_return:"是否已归还",
+                    last_date:"剩余归还时间",
+                    user_book_status:"已经借阅书籍",
+                    //书籍信息
+                    //书籍信息弹窗
+                    ref_display:'',
+                    addFormVisible:false,
+                    // dis:false,
+                    dis:1,
+                    available_table:[
+                    {
+                        bname: '莎士比亚没有士',
+                        name: '莎比',
+                        username: '莎比',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '生子当如孙仲谋,十万精兵送合肥',
+                        name: '孙十万',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+
+                    },
+                    {
+                        bname: '爱因斯坦不过如此',
+                        name: '陈伟涛',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '42016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '52016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '62016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '72016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '只要你够丑',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '虎大佬比',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '虎大佬比',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '虎大佬比',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }],
+                    //书籍信息弹窗
+                    //登录状态
+                    user_status:"",
+                    //分页——————————————
+                    input_value:"",
+                    //显示第几页
+                    currentPage:1,
+                    //总数据多少条
+                    totalCount:1,
+                    //选择条数
+                    pageSizes:[1,2,3,4,5],
+                    // 默认每页显示的条数
+                    pageSize:7,
+                    //是否显示值value
+                    value:false,
+                    //总页数
+                    pageCount:2,
+                    //分页————————————————————
+                    //页面效果
+                    logoutDialogVisible:false,
+                    
+                    activeIndex: '1',
+                    activeIndex2: '1',
+                    centerDialogVisible: false,
+                    quote:"因依老宿发心初，半学修心半读书。——王建《寄旧山僧》",
+                    quotes:['书以陶性情，诗以养静观————郭沫若《潮汐集·有赠》',
+                        '田中读书慕尧舜，坐待四海升平年。——高启《练圻老人农隐》',
+                    '因依老宿发心初，半学修心半读书。——王建《寄旧山僧》',
+                    '粗缯大布裹生涯，腹有诗书气自华。——苏轼《和董传留别》',
+                    '我闭南楼看道书，幽帘清寂在仙居。——李白《早秋单父南楼酬窦公衡》',
+                    '奚童悄向舆夫语，莫典春衣又买书？——潘际云《厂桥》',
+                    '窗间白发催愁境，烛底苍头劝读书。——汤显祖《正觉寺示弟儒祖》',
+                    '萧索空宇中，了无一可悦！历览千载书，时时见遗烈。——陶渊明《癸卯岁十二月中作与从弟敬远》',
+                    '地炉茶鼎烹活火，一清足称读书者。读书之乐何处寻？数点梅花天地心。——翁森《四时读书乐》',
+                    '二客东南名胜，万卷诗书事业，尝试与君谋。——辛弃疾《水调歌头·舟次扬州和人韵》',
+                    '书多笔渐重，睡少枕长新。——姚合《别贾岛》',
+                    '书卷多情似故人，晨昏忧乐每相亲。——于谦《观书》',
+                    '读书切戒在慌忙，涵泳工夫兴味长。——陆九渊《读书》',
+                    '诗非易作须勤读，琴亦难精莫废弹。——刘克庄《赠玉隆刘道士》'],
+                    //统计图数据
+                    //效果
+                    show2: false,
+                    //
+                    //统计图options: [{
+                    value: '',
+                    input_value:'',
+                    borrow_books_length:1,
+                    //分页储存数据
+                    tableData:[
+                    {
+                        bname: '莎士比亚没有士',
+                        name: '莎比',
+                        username: '莎比',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '生子当如孙仲谋,十万精兵送合肥',
+                        name: '孙十万',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+
+                    },
+                    {
+                        bname: '爱因斯坦不过如此',
+                        name: '陈伟涛',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '42016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '52016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '62016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '72016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '只要你够丑',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '虎大佬比',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }],
+                    //分页临时存储
+                    textData:[
+                    {
+                        bname: '莎士比亚没有士',
+                        name: '莎比',
+                        username: '莎比',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '生子当如孙仲谋,十万精兵送合肥',
+                        name: '孙十万',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '爱因斯坦不过如此',
+                        name: '陈伟涛',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '42016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        on_shelf:"上架时间",
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '52016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '62016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        username: '莎比',
+                        start_date:"开始时间",
+                        end_date:"结束时间"
+                    },
+                    {
+                        bname: '72016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '只要你够丑',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        bname: '虎大佬比',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }],
+                    //借阅书籍
+                    borrow_books:[
+                        {
+                            bname: '莎士比亚没有士',
+                            name: '莎比',
+                            address: '上海市普陀区金沙江路 1518 弄',
+                            on_shelf:"上架时间"
+                        },
+                        {
+                            bname: '生子当如孙仲谋,十万精兵送合肥',
+                            name: '孙十万',
+                            address: '上海市普陀区金沙江路 1518 弄',
+                            on_shelf:"上架时间"
+                        }
+                    ]
+            //书籍信息弹窗
+                };
+            },
+            methods: {
+                //头部导航栏点击
+                handleSelect(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                change_quote(){
+                    this.quote=this.quotes[(Math.random()*10).toFixed(0)];
+                },
+                //侧面导航栏打开
+                left_nav_handleOpen(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                //侧面导航栏关闭
+                left_nav_handleClose(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                logout(){
+                    axios
+                        .get('user/logout',{
+                        })
+                        .then((res)=>{
+                            console.log(res.data)
+                            if (res.data.flag) {
+                                location.href="main_entrance.html"
+                            } else {
+                                alert("退出失败");
+                            }
+                        })
+                        .finally(()=>{console.log("获取搜索执行完毕");})
+                },
+                    //弹窗操作
+                    click_window_btn(){
+                        // console.log("111111111111111");
+                        // console.log(this.dis);
+                        //默认dis=0——不显示
+                        this.dis=!this.dis;
+                        if (this.dis) {
+                            //显示
+                            this.ref_display.display="block";
+                        }else{
+                            this.ref_display.display="none";
+                        }
+                    },
+                    //点击还书交互
+                        click_return_book(index)
+                        {
+                            console.log(index);
+                            axios
+                                .get('user/return',{
+                                    params:{
+                                        bname:this.borrow_books[index].bname
+                                    }
+                                    // 书名+ID
+                                })
+                                .then((res)=>{
+                                    
+                                    if (res.data.flag) location.reload();
+                                    else alert("还书失败");
+                                })
+                                .finally(()=>{console.log("还书执行完毕");})
+                        },
+                    // 列表交互
+                    history_list(){
+                        axios
+                            .get('user/findBorrowing',{
+                            })
+                            .then((res)=>{
+                                this.borrow_books=res.data;
+                                this.borrow_books_length=3-this.borrow_books.length;
+                            })
+                            .finally(()=>{console.log("获取历史表获取执行完毕");})
+                    },
+
+                
+
+            },
+                //图书库操作
+            mounted() {
+                //页面效果函数
+                let timer1 =setTimeout(()=>{this.show2=!this.show2},500)
+                let timer2 =setInterval(()=>{this.change_quote()},10000)
+                //图书库周期函数
+                // this.handleData(this.tableData);
+                this.history_list();
+                this.handleData(this.tableData);
+                // this.ref_display=this.$refs.dialog_table.style.display;
+                // this.ref_display=this.$refs.dialog_table.style;
+            },
+            
+        })
+    </script>
 </body>
 </html>

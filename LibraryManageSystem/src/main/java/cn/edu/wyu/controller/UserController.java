@@ -229,6 +229,13 @@ public class UserController {
             map.put("msg", "您借阅的书本数量已达上限（3本）");
             return map;
         }
+        for (BorrowHistory borrowing : list) {
+            if (borrowing.getBname().equals(bname)) {
+                map.put("flag", false);
+                map.put("msg", "您已借阅该本书籍");
+                return map;
+            }
+        }
         return service.addBorrowHistory(loginId,bname);
         /*map.put("flag", true);
         return map;*/
